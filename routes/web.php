@@ -23,3 +23,9 @@ Route::get('/upload',[UploadController::class,'index'])->name('upload');
 // Route::get('/', [DashboardController::class, 'index']);
 Route::Post('',[UploadController::class,'store'])->name('create');
 Route::get('/admin',[UploadController::class,'showAll'])->name('show');
+
+Route::get('/download/{id}',[UploadController::class,'download'])->name('download');
+
+// Route::get('download/{path}',function(){
+//     return Storage::disk('uploads')->download('thumbnails/'.'{path}');
+// });

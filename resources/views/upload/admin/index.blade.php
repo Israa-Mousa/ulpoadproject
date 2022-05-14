@@ -47,6 +47,7 @@
             <th scope="col">file path</th>
             <th>title</th>
             {{-- <th>Delete</th> --}}
+          <th>download</th>
           </tr>
         </thead>
 
@@ -57,6 +58,8 @@
             <td scope="col">{{$file->file}}</td>
 
             <td scope="col">{{$file->title}}</td>
+            <td>
+                <a href="{{ route('download', $file->id) }}"><i class="fa fa-download"></i></a></td>
 
             </tr>
             @endforeach

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\File;
 class UploadController extends Controller
@@ -106,8 +106,17 @@ class UploadController extends Controller
     {
         //
     }
+    public function download($id){
+        // die('test');
+        $file=File::where('id', '=', $id)->get();
+        // var_dump($file[0]->file);
+        // die();
+        // $response = response()->download(Storage::disk('uploads/')->path($file[0]->file));
+        // $redirect = back()->with('success', 'THX!');
+        // return $response;
+        return Storage::disk('uploads')->download($file[0]->file);
 
-
+    }
     public function rules(){
         return [
         'title'=>'required|string|max:255',
